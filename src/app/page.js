@@ -1,7 +1,7 @@
 import Countries from "@/components/Countries";
 import axios from "axios";
 
-const URL = "https://restcountries.com/v3.1/independent?status=true";
+const URL = "https://restcountries.com/v3.1/all";
 
 async function fetchCountries() {
   const response = await axios.get(URL);
