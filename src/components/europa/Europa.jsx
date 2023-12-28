@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
-import style from "@/components/countries.module.css";
+import style from "../../components/countries/countries.module.css";
 
-const Countries = ({ countries }) => {
+const Europa = ({ europa }) => {
   return (
     <div>
-      <h1>Lista de Países</h1>
+      Europa
       <div className={style.containerDaddy}>
-        {countries &&
-          countries.map((country, index) => (
+        {europa &&
+          europa.map((country, index) => (
             <div className={style.containerChild} key={index}>
               <h4>{country.name?.common}</h4>
               <img
@@ -28,4 +28,4 @@ const Countries = ({ countries }) => {
   );
 };
 
-export default Countries;
+export default Europa;
