@@ -12,12 +12,16 @@
 .containerChild {
   display: flex;
   flex-direction: column;
-  background-color: rgba(30, 29, 28, 0.454);
+  background-color: rgba(0, 0, 0, 0.454);
   padding-inline: 1rem;
   border-radius: 10px;
   height: 400px;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  gap: 1rem;
 }
 
 .flag {
-  width: 300px;
+  width: 200px;
 }
