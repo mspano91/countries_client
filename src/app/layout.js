@@ -1,8 +1,12 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Navbar from "../components/Navbar";
+import { Cairo } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const cairo = Cairo({
+  weight: ["300", "400", "500"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "World App",
@@ -12,20 +16,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/">All</Link>
-            </li>
-            <li>
-              <Link href="/europe">Europe</Link>
-            </li>
-            <li>America</li>
-
-            <li>Africa</li>
-          </ul>
-        </nav>
+      <body className={cairo.className}>
+        <Navbar />
         {children}
       </body>
     </html>

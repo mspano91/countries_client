@@ -1,6 +1,10 @@
 import Europa from "@/components/europa/europa";
 import axios from "axios";
 
+export const metadata = {
+  title: "Europe",
+};
+
 const URL = "https://restcountries.com/v3.1";
 
 async function fetchAEuropa() {

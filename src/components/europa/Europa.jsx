@@ -5,7 +5,7 @@ import style from "../../components/countries/countries.module.css";
 const Europa = ({ europa }) => {
   return (
     <div>
-      Europa
+      <h1>Europe</h1>
       <div className={style.containerDaddy}>
         {europa &&
           europa.map((country, index) => (
