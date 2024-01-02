@@ -7,14 +7,15 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <Link href="/">All</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
             <Link href="/europe">Europe</Link>
           </li>
-          <li>America</li>
 
-          <li>Africa</li>
+          <li>
+            <Link href="/favs">Favs</Link>
+          </li>
         </ul>
       </nav>
     </div>

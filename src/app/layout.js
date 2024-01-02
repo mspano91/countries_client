@@ -1,7 +1,7 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import { Cairo } from "next/font/google";
+import ReduxProvider from "@/redux/ReduxProvider";
 
 const cairo = Cairo({
   weight: ["300", "400", "500"],
@@ -17,8 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={cairo.className}>
-        <Navbar />
-        {children}
+        <ReduxProvider>
+          <Navbar />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
