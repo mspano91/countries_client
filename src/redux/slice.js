@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   countries: [],
+  copyCountries: [],
 };
 
 export const paisesSlice = createSlice({
@@ -10,6 +11,7 @@ export const paisesSlice = createSlice({
   reducers: {
     setAllCountries: (state, action) => {
       state.countries = action.payload;
+      state.copyCountries = action.payload;
     },
   },
 });

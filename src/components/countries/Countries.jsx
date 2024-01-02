@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllCountries } from "@/redux/slice";
+import { v4 } from "uuid";
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Countries = () => {
       // const response = await axios.get(`${URL}/all`);
       const response = await axios.get(`http://localhost:3001/countries`);
       const countries = response.data;
-      dispatch(setAllCountries(countries));
+      dispatch(setAllCountries(countries.map((c) => ({ ...c, id: v4() }))));
     } catch (error) {
       console.error("Error fetching countries:", error);
       throw error;
@@ -40,10 +41,13 @@ const Countries = () => {
                 className={style.flag}
               />
               <p>Contininent: {country?.continent}</p>
+              <p>Capital: {country?.capital}</p>
               <p>
                 Languages:{" "}
-                {country.language && Object.keys(country.language).join(", ")}
+                {country.language && Object.values(country.language).join(", ")}
               </p>
+              <button>add+</button>
+              {/* {isFav ? "❤️" : "🤍"} */}
             </div>
           ))}
       </div>
