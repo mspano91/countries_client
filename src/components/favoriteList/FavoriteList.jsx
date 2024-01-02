@@ -1,44 +1,24 @@
 "use client";
 import React from "react";
 import style from "../../components/countries/countries.module.css";
-import axios from "axios";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllCountries, newFavorites } from "@/redux/slice";
-import { v4 } from "uuid";
+import { deleteFav } from "@/redux/slice";
 
-const Countries = () => {
+export default function FavoriteList() {
   const dispatch = useDispatch();
-  const countryList = useSelector((state) => state.paises.countries);
+  const favoritos = useSelector((state) => state.paises.favorites);
+  console.log(favoritos);
 
-  async function fetchCountries() {
-    try {
-      // const response = await axios.get(`${URL}/all`);
-      const response = await axios.get(`http://localhost:3001/countries`);
-      const countries = response.data;
-      dispatch(
-        setAllCountries(countries.map((pais) => ({ ...pais, id: v4() })))
-      );
-    } catch (error) {
-      console.error("Error fetching countries:", error);
-      throw error;
-    }
-  }
-
-  const handleAddFav = (country) => {
-    dispatch(newFavorites(country));
+  const handleDelete = (id) => {
+    dispatch(deleteFav(id));
   };
-
-  useEffect(() => {
-    fetchCountries();
-  }, []);
 
   return (
     <div>
-      <h1>All countries</h1>
+      <h1>My list</h1>
       <div className={style.containerDaddy}>
-        {countryList &&
-          countryList.map((country, index) => (
+        {favoritos &&
+          favoritos.map((country, index) => (
             <div className={style.containerChild} key={index}>
               <h4>{country.name}</h4>
               <img
@@ -54,10 +34,10 @@ const Countries = () => {
               </p>
               <button
                 onClick={() => {
-                  handleAddFav(country);
+                  handleDelete(country.id);
                 }}
               >
-                ✔ agregar
+                ❌quitar
               </button>
               {/* {isFav ? "❤️" : "🤍"} */}
             </div>
@@ -65,6 +45,4 @@ const Countries = () => {
       </div>
     </div>
   );
-};
-
-export default Countries;
+}
