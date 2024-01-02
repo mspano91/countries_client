@@ -4,7 +4,7 @@ import style from "../../components/countries/countries.module.css";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllCountries } from "@/redux/slice";
+import { setAllCountries, newFavorites } from "@/redux/slice";
 import { v4 } from "uuid";
 
 const Countries = () => {
@@ -16,12 +16,18 @@ const Countries = () => {
       // const response = await axios.get(`${URL}/all`);
       const response = await axios.get(`http://localhost:3001/countries`);
       const countries = response.data;
-      dispatch(setAllCountries(countries.map((c) => ({ ...c, id: v4() }))));
+      dispatch(
+        setAllCountries(countries.map((pais) => ({ ...pais, id: v4() })))
+      );
     } catch (error) {
       console.error("Error fetching countries:", error);
       throw error;
     }
   }
+
+  const handleAddFav = (country) => {
+    dispatch(newFavorites(country));
+  };
 
   useEffect(() => {
     fetchCountries();
@@ -29,7 +35,7 @@ const Countries = () => {
 
   return (
     <div>
-      <h1>Lista de Países</h1>
+      <h1>All countries</h1>
       <div className={style.containerDaddy}>
         {countryList &&
           countryList.map((country, index) => (
@@ -46,7 +52,13 @@ const Countries = () => {
                 Languages:{" "}
                 {country.language && Object.values(country.language).join(", ")}
               </p>
-              <button>add+</button>
+              <button
+                onClick={() => {
+                  handleAddFav(country);
+                }}
+              >
+                add+
+              </button>
               {/* {isFav ? "❤️" : "🤍"} */}
             </div>
           ))}
