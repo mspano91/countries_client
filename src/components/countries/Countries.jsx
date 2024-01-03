@@ -1,38 +1,28 @@
 "use client";
 import React from "react";
 import style from "../../components/countries/countries.module.css";
-import axios from "axios";
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllCountries, newFavorites } from "@/redux/slice";
 import { v4 } from "uuid";
+import { getCountries } from "@/utils/services/getCountriesReq";
 
 const Countries = () => {
   const dispatch = useDispatch();
   const countryList = useSelector((state) => state.paises.countries);
-  // const Continents = countryList.filter((pais) => pais.continent === "Europe");
-  // console.log(Continents);
-
-  async function fetchCountries() {
-    try {
-      // const response = await axios.get(`${URL}/all`);
-      const response = await axios.get(`http://localhost:3001/countries`);
-      const countries = response.data;
-      dispatch(
-        setAllCountries(countries.map((pais) => ({ ...pais, id: v4() })))
-      ); //se le agrega un UUID una vez que trae la info de la api
-    } catch (error) {
-      console.error("Error fetching countries:", error);
-      throw error;
-    }
-  }
 
   const handleAddFav = (country) => {
     dispatch(newFavorites(country));
   };
 
+  const fetchCountries = async () => {
+    const countries = await getCountries();
+    dispatch(setAllCountries(countries.map((pais) => ({ ...pais, id: v4() })))); //se le agrega un UUID una vez que trae la info de la api
+  };
+
   useEffect(() => {
-    fetchCountries();
+    !countryList.length && fetchCountries();
   }, []);
 
   return (

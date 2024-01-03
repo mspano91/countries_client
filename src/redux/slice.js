@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   countries: [],
-  europe: [],
+  // europe: [],
   copyCountries: [],
   favorites: [],
 };
@@ -15,9 +15,9 @@ export const paisesSlice = createSlice({
       state.countries = action.payload;
       state.copyCountries = action.payload;
     },
-    setEurope: (state, action) => {
-      state.europe = action.payload;
-    },
+    // setEurope: (state, action) => {
+    //   state.europe = action.payload;
+    // },
     newFavorites: (state, action) => {
       const countryToAdd = action.payload;
       state.favorites.push(countryToAdd);
