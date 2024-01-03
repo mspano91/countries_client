@@ -10,6 +10,8 @@ import { v4 } from "uuid";
 const Countries = () => {
   const dispatch = useDispatch();
   const countryList = useSelector((state) => state.paises.countries);
+  // const Continents = countryList.filter((pais) => pais.continent === "Europe");
+  // console.log(Continents);
 
   async function fetchCountries() {
     try {
@@ -41,24 +43,30 @@ const Countries = () => {
           countryList.map((country, index) => (
             <div className={style.containerChild} key={index}>
               <h4>{country?.name}</h4>
-              <img
-                src={country.flag}
-                alt={`Flag of ${country.name}`}
-                className={style.flag}
-              />
-              <p>Contininent: {country?.continent}</p>
-              <p>Capital: {country?.capital}</p>
-              <p>
-                Languages:{" "}
-                {country.language && Object.values(country.language).join(", ")}
-              </p>
-              <button
-                onClick={() => {
-                  handleAddFav(country);
-                }}
-              >
-                ✔ agregar
-              </button>
+              <div className={style.containerFlag}>
+                <img
+                  src={country.flag}
+                  alt={`Flag of ${country.name}`}
+                  className={style.flag}
+                />
+              </div>
+              <div className={style.containerDetails}>
+                <p>Contininent: {country?.continent}</p>
+                <p>id: {country?.id}</p>
+                <p>Capital: {country?.capital}</p>
+                <p>
+                  Languages:{" "}
+                  {country.language &&
+                    Object.values(country.language).join(", ")}
+                </p>
+                <button
+                  onClick={() => {
+                    handleAddFav(country);
+                  }}
+                >
+                  ✔ agregar
+                </button>
+              </div>
             </div>
           ))}
       </div>

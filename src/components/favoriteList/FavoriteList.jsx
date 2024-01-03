@@ -27,6 +27,7 @@ export default function FavoriteList() {
                 className={style.flag}
               />
               <p>Contininent: {country?.continent}</p>
+              <p>id: {country?.id}</p>
               <p>Capital: {country?.capital}</p>
               <p>
                 Languages:{" "}
