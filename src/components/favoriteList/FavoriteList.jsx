@@ -39,7 +39,6 @@ export default function FavoriteList() {
               >
                 ❌quitar
               </button>
-              {/* {isFav ? "❤️" : "🤍"} */}
             </div>
           ))}
       </div>

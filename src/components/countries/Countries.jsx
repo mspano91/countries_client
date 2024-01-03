@@ -18,7 +18,7 @@ const Countries = () => {
       const countries = response.data;
       dispatch(
         setAllCountries(countries.map((pais) => ({ ...pais, id: v4() })))
-      );
+      ); //se le agrega un UUID una vez que trae la info de la api
     } catch (error) {
       console.error("Error fetching countries:", error);
       throw error;
@@ -40,7 +40,7 @@ const Countries = () => {
         {countryList &&
           countryList.map((country, index) => (
             <div className={style.containerChild} key={index}>
-              <h4>{country.name}</h4>
+              <h4>{country?.name}</h4>
               <img
                 src={country.flag}
                 alt={`Flag of ${country.name}`}
@@ -59,7 +59,6 @@ const Countries = () => {
               >
                 ✔ agregar
               </button>
-              {/* {isFav ? "❤️" : "🤍"} */}
             </div>
           ))}
       </div>
