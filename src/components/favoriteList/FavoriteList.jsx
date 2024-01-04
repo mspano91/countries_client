@@ -26,12 +26,12 @@ export default function FavoriteList() {
             {known &&
               known.map((country, index) => (
                 <div className={style.containerChildA} key={index}>
-                  <h4 className={style.nameA}> {country.name}</h4>
                   <img
                     src={country.flag}
                     alt={`Flag of ${country.name}`}
                     className={style.flagA}
                   />
+                  <h4 className={style.nameA}> {country.name}</h4>
                   <button
                     onClick={() => {
                       handleDelete(country.id);
