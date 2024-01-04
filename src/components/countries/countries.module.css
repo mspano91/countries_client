@@ -2,8 +2,8 @@
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  background-color: rgba(253, 253, 253, 0.369);
+  gap: 5rem;
+  background-color: rgb(27, 56, 41);
   width: 1300px;
   padding-top: 5rem;
 }
@@ -12,19 +12,52 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.454);
-  padding-inline: 1rem;
-  padding-top: 1rem;
-  border-radius: 10px;
-  height: 400px;
-  width: 350px;
-  align-items: center;
+  border-radius: 5px;
+  height: 230px;
+  width: 280px;
+  text-align: center;
+  position: relative;
+}
+
+.containerFlag h4 {
+  font-size: 18px;
 }
 
 .flag {
-  width: 250px;
+  object-fit: cover;
+  height: 180px;
+  width: 280px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .containerDetails {
   width: 250px;
   display: block;
+}
+
+.ContainerButtonsPosition {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 40%;
+}
+
+.ContainerButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.buttons {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.325);
+  /* border: 1px solid red; */
+  border-radius: 3px;
+  width: 150px;
+  height: 35px;
 }

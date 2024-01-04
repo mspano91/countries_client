@@ -4,7 +4,7 @@ import style from "../../components/countries/countries.module.css";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllCountries, newFavorites } from "@/redux/slice";
+import { setAllCountries, newFavorites, CountryToGo } from "@/redux/slice";
 import { v4 } from "uuid";
 import { getCountries } from "@/utils/services/getCountriesReq";
 
@@ -14,6 +14,9 @@ const Countries = () => {
 
   const handleAddFav = (country) => {
     dispatch(newFavorites(country));
+  };
+  const handleToGo = (country) => {
+    dispatch(CountryToGo(country));
   };
 
   const fetchCountries = async () => {
@@ -29,36 +32,51 @@ const Countries = () => {
     <div>
       <h1>All countries</h1>
       <div className={style.containerDaddy}>
-        {countryList &&
-          countryList.map((country, index) => (
-            <div className={style.containerChild} key={index}>
-              <h4>{country?.name}</h4>
-              <div className={style.containerFlag}>
-                <img
-                  src={country.flag}
-                  alt={`Flag of ${country.name}`}
-                  className={style.flag}
-                />
+        {countryList
+          ? countryList.map((country, index) => (
+              <div className={style.containerChild} key={index}>
+                <div className={style.containerFlag}>
+                  <img
+                    src={country.flag}
+                    alt={`Flag of ${country.name}`}
+                    className={style.flag}
+                  />
+                  <h4>{country?.name}</h4>
+                </div>
+                <div className={style.containerDetails}>
+                  {/* <p>Contininent: {country?.continent}</p>
+                  <p>Capital: {country?.capital}</p>
+                  <p>
+                    Languages:{" "}
+                    {country.language &&
+                      Object.values(country.language).join(", ")}
+                  </p> */}
+                  <div className={style.ContainerButtonsPosition}>
+                    <div className={style.ContainerButtons}>
+                      <button
+                        className={style.buttons}
+                        onClick={() => {
+                          handleAddFav(country);
+                        }}
+                      >
+                        ✔ add known
+                      </button>
+
+                      <button
+                        className={style.buttons}
+                        onClick={() => {
+                          handleToGo(country);
+                        }}
+                      >
+                        ✈ add to Go!
+                      </button>
+                      <button className={style.buttons}>🔔info</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className={style.containerDetails}>
-                <p>Contininent: {country?.continent}</p>
-                <p>id: {country?.id}</p>
-                <p>Capital: {country?.capital}</p>
-                <p>
-                  Languages:{" "}
-                  {country.language &&
-                    Object.values(country.language).join(", ")}
-                </p>
-                <button
-                  onClick={() => {
-                    handleAddFav(country);
-                  }}
-                >
-                  ✔ agregar
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          : null}
       </div>
     </div>
   );

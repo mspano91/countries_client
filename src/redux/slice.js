@@ -4,7 +4,8 @@ const initialState = {
   countries: [],
   // europe: [],
   copyCountries: [],
-  favorites: [],
+  known: [],
+  countriesToGo: [],
 };
 
 export const paisesSlice = createSlice({
@@ -20,17 +21,33 @@ export const paisesSlice = createSlice({
     // },
     newFavorites: (state, action) => {
       const countryToAdd = action.payload;
-      state.favorites.push(countryToAdd);
+      state.known.push(countryToAdd);
     },
     deleteFav: (state, action) => {
       const toDelete = action.payload;
-      state.favorites = state.favorites.filter((pais) => pais.id !== toDelete);
+      state.known = state.known.filter((pais) => pais.id !== toDelete);
+    },
+    deleteToGo: (state, action) => {
+      const toDelete = action.payload;
+      state.countriesToGo = state.countriesToGo.filter(
+        (pais) => pais.id !== toDelete
+      );
+    },
+    CountryToGo: (state, action) => {
+      const toGo = action.payload;
+      state.countriesToGo.push(toGo);
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setAllCountries, setEurope, newFavorites, deleteFav } =
-  paisesSlice.actions;
+export const {
+  setAllCountries,
+  CountryToGo,
+  setEurope,
+  newFavorites,
+  deleteFav,
+  deleteToGo,
+} = paisesSlice.actions;
 
 export default paisesSlice.reducer;

@@ -40,20 +40,19 @@ const Europa = () => {
         {europe
           ? europe.map((country, index) => (
               <div className={style.containerChild} key={index}>
-                <h4>{country.name}</h4>
                 <img
                   src={country.flag}
                   alt={`Flag of ${country.name}`}
                   className={style.flag}
                 />
+                <h4>{country.name}</h4>
                 <div className={style.containerDetails}>
-                  <p>Contininent: {country?.continent}</p>
-                  <p>id: {country?.id}</p>
+                  {/* <p>Contininent: {country?.continent}</p>
                   <p>
                     Languages:{" "}
                     {country.language &&
                       Object.values(country.language).join(", ")}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             ))

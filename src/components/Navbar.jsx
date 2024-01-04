@@ -14,7 +14,7 @@ export default function Navbar() {
           </li>
 
           <li>
-            <Link href="/favs">Favs</Link>
+            <Link href="/favs">My trips</Link>
           </li>
         </ul>
       </nav>
