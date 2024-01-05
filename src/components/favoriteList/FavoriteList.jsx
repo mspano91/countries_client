@@ -2,18 +2,21 @@
 import React from "react";
 import style from "@/components/favoriteList/favorite.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFav, deleteToGo } from "@/redux/slice";
+import { deleteFav, deleteToGo, changeList } from "@/redux/slice";
 
 export default function FavoriteList() {
   const dispatch = useDispatch();
   const known = useSelector((state) => state.paises.known);
   const toGo = useSelector((state) => state.paises.countriesToGo);
 
-  const handleDelete = (id) => {
-    dispatch(deleteFav(id));
+  const handleDelete = (country) => {
+    dispatch(deleteFav(country));
   };
   const handleDeleteToGo = (id) => {
     dispatch(deleteToGo(id));
+  };
+  const handleDone = (country) => {
+    dispatch(changeList(country));
   };
 
   return (
@@ -34,7 +37,7 @@ export default function FavoriteList() {
                   <h4 className={style.nameA}> {country.name}</h4>
                   <button
                     onClick={() => {
-                      handleDelete(country.id);
+                      handleDelete(country);
                     }}
                   >
                     ❌
@@ -64,7 +67,14 @@ export default function FavoriteList() {
                         >
                           ❌
                         </button>
-                        <button className={style.buttons}>✔</button>
+                        <button
+                          className={style.buttons}
+                          onClick={() => {
+                            handleDone(country);
+                          }}
+                        >
+                          ✔
+                        </button>
                       </div>
                     </div>
                   </div>

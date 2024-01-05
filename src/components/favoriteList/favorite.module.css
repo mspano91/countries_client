@@ -47,10 +47,10 @@
   background-color: rgba(30, 28, 28, 0);
   border-radius: 5px;
   height: 50px;
-  width: 330px;
+  width: 320px;
   text-align: center;
   align-items: center;
-  transition: background-color 0.2s ease-in;
+  transition: background-color 0.00856s ease-in;
 }
 
 .containerChildA:hover {
@@ -75,6 +75,9 @@
 .containerDaddy {
   display: grid;
   place-items: center;
+  place-content: start;
+  padding-top: 1.5rem;
+  row-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
   background-color: rgb(27, 56, 41);
   border: 1px solid rgb(255, 251, 0);

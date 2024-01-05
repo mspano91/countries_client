@@ -25,7 +25,8 @@ export const paisesSlice = createSlice({
     },
     deleteFav: (state, action) => {
       const toDelete = action.payload;
-      state.known = state.known.filter((pais) => pais.id !== toDelete);
+      state.known = state.known.filter((pais) => pais.id !== toDelete.id);
+      state.countriesToGo = [...state.countriesToGo, toDelete];
     },
     deleteToGo: (state, action) => {
       const toDelete = action.payload;
@@ -36,6 +37,13 @@ export const paisesSlice = createSlice({
     CountryToGo: (state, action) => {
       const toGo = action.payload;
       state.countriesToGo.push(toGo);
+    },
+    changeList: (state, action) => {
+      const done = action.payload;
+      state.known = [...state.known, done];
+      state.countriesToGo = state.countriesToGo.filter(
+        (pais) => pais.id !== done.id
+      );
     },
   },
 });
@@ -48,6 +56,7 @@ export const {
   newFavorites,
   deleteFav,
   deleteToGo,
+  changeList,
 } = paisesSlice.actions;
 
 export default paisesSlice.reducer;

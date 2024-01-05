@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import style from "../../components/countries/countries.module.css";
 
 import { useEffect } from "react";
@@ -11,6 +11,16 @@ import { getCountries } from "@/utils/services/getCountriesReq";
 const Countries = () => {
   const dispatch = useDispatch();
   const countryList = useSelector((state) => state.paises.countries);
+  const countriesPerPage = 6;
+
+  //pagination
+  const [visibleCountries, setVisibleCountries] = useState(countriesPerPage);
+
+  const loadMoreCountries = () => {
+    setVisibleCountries((prev) => prev + countriesPerPage);
+  };
+
+  const visibleCountryList = countryList.slice(0, visibleCountries);
 
   const handleAddFav = (country) => {
     dispatch(newFavorites(country));
@@ -32,8 +42,8 @@ const Countries = () => {
     <div>
       <h1>All countries</h1>
       <div className={style.containerDaddy}>
-        {countryList
-          ? countryList.map((country, index) => (
+        {visibleCountryList
+          ? visibleCountryList.map((country, index) => (
               <div className={style.containerChild} key={index}>
                 <div className={style.containerFlag}>
                   <img
@@ -77,6 +87,12 @@ const Countries = () => {
               </div>
             ))
           : null}
+
+        {visibleCountries < countryList.length && (
+          <div className={style.loadMoreButton}>
+            <button onClick={loadMoreCountries}>Load More</button>
+          </div>
+        )}
       </div>
     </div>
   );
