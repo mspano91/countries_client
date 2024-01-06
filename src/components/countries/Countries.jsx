@@ -4,9 +4,10 @@ import style from "../../components/countries/countries.module.css";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllCountries, newFavorites, CountryToGo } from "@/redux/slice";
+import { setAllCountries } from "@/redux/slice";
 import { v4 } from "uuid";
 import { getCountries } from "@/utils/services/getCountriesReq";
+import Buttons from "../Buttons";
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -22,13 +23,6 @@ const Countries = () => {
 
   const visibleCountryList = countryList.slice(0, visibleCountries);
 
-  const handleAddFav = (country) => {
-    dispatch(newFavorites(country));
-  };
-  const handleToGo = (country) => {
-    dispatch(CountryToGo(country));
-  };
-
   const fetchCountries = async () => {
     const countries = await getCountries();
     dispatch(setAllCountries(countries.map((pais) => ({ ...pais, id: v4() })))); //se le agrega un UUID una vez que trae la info de la api
@@ -40,7 +34,7 @@ const Countries = () => {
 
   return (
     <div>
-      <h1>All countries</h1>
+      <h1 className={style.tittle}>How many countries you already know?</h1>
       <div className={style.containerDaddy}>
         {visibleCountryList
           ? visibleCountryList.map((country, index) => (
@@ -54,40 +48,18 @@ const Countries = () => {
                   <h4>{country?.name}</h4>
                 </div>
                 <div className={style.containerDetails}>
+                  <Buttons />
                   {/* <p>Contininent: {country?.continent}</p>
                   <p>Capital: {country?.capital}</p>
                   <p>
-                    Languages:{" "}
-                    {country.language &&
+                  Languages:{" "}
+                  {country.language &&
                       Object.values(country.language).join(", ")}
                   </p> */}
-                  <div className={style.ContainerButtonsPosition}>
-                    <div className={style.ContainerButtons}>
-                      <button
-                        className={style.buttons}
-                        onClick={() => {
-                          handleAddFav(country);
-                        }}
-                      >
-                        ✔ add known
-                      </button>
-
-                      <button
-                        className={style.buttons}
-                        onClick={() => {
-                          handleToGo(country);
-                        }}
-                      >
-                        ✈ add to Go!
-                      </button>
-                      <button className={style.buttons}>🔔info</button>
-                    </div>
-                  </div>
                 </div>
               </div>
             ))
           : null}
-
         {visibleCountries < countryList.length && (
           <div className={style.loadMoreButton}>
             <button onClick={loadMoreCountries}>Load More</button>

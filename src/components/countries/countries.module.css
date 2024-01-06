@@ -2,13 +2,17 @@
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5rem;
-  background-color: rgb(27, 56, 41);
+  gap: 2rem;
+  background-color: rgba(53, 55, 54, 0.489);
   width: 1300px;
-  padding-top: 5rem;
+  height: 750px;
+  padding-top: 2rem;
   border-radius: 1rem;
+  overflow-y: scroll;
 }
-
+.tittle {
+  margin-top: 1.5rem;
+}
 .containerChild {
   display: flex;
   flex-direction: column;
