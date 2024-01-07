@@ -60,11 +60,12 @@ const Europa = () => {
                   className={style.flag}
                 />
                 <h4>{country.name}</h4>
-                <Buttons />
+                <Buttons country={country} />
                 <div className={style.containerDetails}></div>
               </div>
             ))
           : null}
+
         {visibleCountries < allCountries.length && (
           <div className={style.loadMoreButton}>
             <button onClick={loadMoreCountries}>Load More</button>

@@ -48,7 +48,7 @@ const Countries = () => {
                   <h4>{country?.name}</h4>
                 </div>
                 <div className={style.containerDetails}>
-                  <Buttons />
+                  <Buttons country={country} />
                   {/* <p>Contininent: {country?.continent}</p>
                   <p>Capital: {country?.capital}</p>
                   <p>

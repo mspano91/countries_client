@@ -4,12 +4,25 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   background-color: rgba(53, 55, 54, 0.489);
-  width: 1300px;
+  width: 1350px;
   height: 750px;
   padding-top: 2rem;
   border-radius: 1rem;
   overflow-y: scroll;
 }
+
+.containerDaddy::-webkit-scrollbar {
+  width: 5px; /* Ancho de la barra de desplazamiento */
+}
+
+.containerDaddy::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del pulgar (thumb) de la barra de desplazamiento */
+}
+
+.containerDaddy::-webkit-scrollbar-track {
+  background-color: #fd5c5c; /* Color de fondo de la barra de desplazamiento */
+}
+
 .tittle {
   margin-top: 1.5rem;
 }

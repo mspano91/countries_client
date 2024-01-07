@@ -1,17 +1,21 @@
 .god {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgb(255, 127, 185);
-
+  /* border: 1px solid rgb(246, 0, 111); */
   width: 1300px;
   height: 100%;
+}
+
+.tittle {
+  margin-top: 1.5rem;
 }
 
 .containerGranpa {
   display: flex;
   flex-direction: row;
   height: 705px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  border-radius: 1rem;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.096);
 }
@@ -21,22 +25,23 @@
   padding-inline: 0.5rem;
   gap: 5rem;
   background-color: #171717;
-  border: 1px solid rgb(26, 255, 0);
+  border-radius: 1rem;
+  /* border: 1px solid rgb(87, 200, 21); */
   width: 350px;
   height: 705px;
   text-align: center;
   overflow-y: auto;
 }
 
-.containerDaddyA::-webkit-scrollbar {
+.containerChildA::-webkit-scrollbar {
   width: 10px; /* Ancho de la barra de desplazamiento */
 }
 
-.containerDaddyA::-webkit-scrollbar-thumb {
-  background-color: #888; /* Color del pulgar (thumb) de la barra de desplazamiento */
+.containerChildA::-webkit-scrollbar-thumb {
+  background-color: #da1717; /* Color del pulgar (thumb) de la barra de desplazamiento */
 }
 
-.containerDaddyA::-webkit-scrollbar-track {
+.containerChildA::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Color de fondo de la barra de desplazamiento */
 }
 
@@ -79,14 +84,15 @@
   padding-top: 1.5rem;
   row-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
-  background-color: rgb(27, 56, 41);
-  border: 1px solid rgb(255, 251, 0);
+  background-color: rgb(62, 116, 88);
+  border-radius: 1rem;
+  /* border: 1px solid rgb(255, 251, 0); */
   width: 950px;
-  height: 670px;
+  height: 665px;
   overflow-y: auto;
 }
 
-.containerDaddy ::-webkit-scrollbar {
+.containerDaddy::-webkit-scrollbar {
   width: 10px; /* Ancho de la barra de desplazamiento */
 }
 
@@ -95,7 +101,7 @@
 }
 
 .containerDaddy::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Color de fondo de la barra de desplazamiento */
+  background-color: #fd5c5c; /* Color de fondo de la barra de desplazamiento */
 }
 
 .containerChild {
