@@ -13,7 +13,7 @@ const Europa = () => {
   const [europe, setEurope] = useState([]);
 
   //pagination
-  const countriesPerPage = 6;
+  const countriesPerPage = 12;
   const [visibleCountries, setVisible] = useState(countriesPerPage);
 
   const loadMoreCountries = () => {
@@ -65,13 +65,16 @@ const Europa = () => {
               </div>
             ))
           : null}
-
-        {visibleCountries < allCountries.length && (
-          <div className={style.loadMoreButton}>
-            <button onClick={loadMoreCountries}>Load More</button>
-          </div>
-        )}
       </div>
+      {visibleCountries < allCountries.length && (
+        <div className={style.ContainerBtnMore}>
+          <div className={style.ContainerButton}>
+            <button className={style.buttonMore} onClick={loadMoreCountries}>
+              Load More
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

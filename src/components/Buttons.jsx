@@ -5,7 +5,6 @@ import { newFavorites, CountryToGo } from "@/redux/slice";
 
 export default function Buttons({ country }) {
   const dispatch = useDispatch();
-  console.log(country);
 
   const handleAddFav = (country) => {
     dispatch(newFavorites(country));

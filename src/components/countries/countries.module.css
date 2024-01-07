@@ -9,6 +9,7 @@
   padding-top: 2rem;
   border-radius: 1rem;
   overflow-y: scroll;
+  position: relative;
 }
 
 .containerDaddy::-webkit-scrollbar {
@@ -76,6 +77,9 @@
   /* display: flex; */
   opacity: 1;
 }
+.containerChild:hover h4 {
+  color: rgb(101, 150, 248);
+}
 
 .buttons {
   border: none;
@@ -87,5 +91,42 @@
   /* border: 1px solid red; */
   border-radius: 3px;
   width: 150px;
+  height: 35px;
+}
+/* 
+.loadMoreButton {
+  border: none;
+  background-color: none;
+} */
+
+.ContainerBtnMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 95%;
+  position: absolute;
+  /* border: 1px solid blue; */
+  width: 1350px;
+}
+
+.ContainerButton {
+  display: flex;
+  left: 50%;
+  gap: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  /* border: 1px solid red; */
+}
+
+.buttonMore {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  background-color: #181818;
+  /* border: 1px solid red; */
+  border-radius: 8px;
+  width: 300px;
   height: 35px;
 }

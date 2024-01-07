@@ -12,7 +12,7 @@ import Buttons from "../Buttons";
 const Countries = () => {
   const dispatch = useDispatch();
   const countryList = useSelector((state) => state.paises.countries);
-  const countriesPerPage = 6;
+  const countriesPerPage = 12;
 
   //pagination
   const [visibleCountries, setVisibleCountries] = useState(countriesPerPage);
@@ -45,7 +45,7 @@ const Countries = () => {
                     alt={`Flag of ${country.name}`}
                     className={style.flag}
                   />
-                  <h4>{country?.name}</h4>
+                  <h4 className={style.nameA}>{country?.name}</h4>
                 </div>
                 <div className={style.containerDetails}>
                   <Buttons country={country} />
@@ -60,12 +60,16 @@ const Countries = () => {
               </div>
             ))
           : null}
-        {visibleCountries < countryList.length && (
-          <div className={style.loadMoreButton}>
-            <button onClick={loadMoreCountries}>Load More</button>
-          </div>
-        )}
       </div>
+      {visibleCountries < countryList.length && (
+        <div className={style.ContainerBtnMore}>
+          <div className={style.ContainerButton}>
+            <button className={style.buttonMore} onClick={loadMoreCountries}>
+              Load More
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
