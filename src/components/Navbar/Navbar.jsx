@@ -1,13 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import style from "@/components/Navbar/navBar.module.css";
 
 export default function Navbar() {
   return (
-    <div>
+    <div className={style.nav}>
       <nav>
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">HOME</Link>
           </li>
           <li>
             <Link href="/europe">Europe</Link>

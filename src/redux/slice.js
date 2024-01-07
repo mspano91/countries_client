@@ -52,7 +52,7 @@ export const paisesSlice = createSlice({
 export const {
   setAllCountries,
   CountryToGo,
-  setEurope,
+  // setEurope,
   newFavorites,
   deleteFav,
   deleteToGo,
