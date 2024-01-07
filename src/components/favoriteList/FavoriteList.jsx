@@ -8,7 +8,7 @@ export default function FavoriteList() {
   return (
     <>
       <div className={style.god}>
-        <h1>wish list</h1>
+        <h1 className={style.tittle}>wish list</h1>
         <div className={style.containerGranpa}>
           <KnownList />
           <NextTrips />

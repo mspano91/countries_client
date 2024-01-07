@@ -2,8 +2,10 @@ import React from "react";
 import style from "@/components/countries/countries.module.css";
 import { useDispatch } from "react-redux";
 import { newFavorites, CountryToGo } from "@/redux/slice";
-export default function Buttons() {
+
+export default function Buttons({ country }) {
   const dispatch = useDispatch();
+  console.log(country);
 
   const handleAddFav = (country) => {
     dispatch(newFavorites(country));
